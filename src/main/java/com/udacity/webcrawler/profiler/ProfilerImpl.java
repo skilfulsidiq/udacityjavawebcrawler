@@ -3,6 +3,7 @@ package com.udacity.webcrawler.profiler;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -61,7 +62,7 @@ final class ProfilerImpl implements Profiler {
     // TODO: Write the ProfilingState data to the given file path. If a file already exists at that
     //       path, the new data should be appended to the existing file.
     Objects.requireNonNull(path);
-    try( Writer writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND )){
+    try( Writer writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8, StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND )){
       writeData(writer);
     }catch (IOException exception){
       exception.printStackTrace();
